@@ -1,0 +1,12 @@
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\bin\Debug\netstandard2.0\Cognizant.Repository.deps.json
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\bin\Debug\netstandard2.0\Cognizant.Repository.dll
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\bin\Debug\netstandard2.0\Cognizant.Repository.pdb
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\obj\Debug\netstandard2.0\Cognizant.Repository.csprojAssemblyReference.cache
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\obj\Debug\netstandard2.0\Cognizant.Repository.csproj.CoreCompileInputs.cache
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\obj\Debug\netstandard2.0\Cognizant.Repository.AssemblyInfoInputs.cache
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\obj\Debug\netstandard2.0\Cognizant.Repository.AssemblyInfo.cs
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\obj\Debug\netstandard2.0\Cognizant.Repository.dll
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\obj\Debug\netstandard2.0\Cognizant.Repository.pdb
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\bin\Debug\netstandard2.0\Cognizant.Domain.dll
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\bin\Debug\netstandard2.0\Cognizant.Domain.pdb
+C:\Users\caioc\Documents\Cognizant\Cognizant.Repository\obj\Debug\netstandard2.0\Cognizant.Repository.csproj.CopyComplete

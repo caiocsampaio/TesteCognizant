@@ -1,0 +1,9 @@
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\bin\Debug\netstandard2.0\Cognizant.Domain.deps.json
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\bin\Debug\netstandard2.0\Cognizant.Domain.dll
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\bin\Debug\netstandard2.0\Cognizant.Domain.pdb
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\obj\Debug\netstandard2.0\Cognizant.Domain.csprojAssemblyReference.cache
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\obj\Debug\netstandard2.0\Cognizant.Domain.csproj.CoreCompileInputs.cache
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\obj\Debug\netstandard2.0\Cognizant.Domain.AssemblyInfoInputs.cache
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\obj\Debug\netstandard2.0\Cognizant.Domain.AssemblyInfo.cs
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\obj\Debug\netstandard2.0\Cognizant.Domain.dll
+C:\Users\caioc\Documents\Cognizant\Cognizant.Domain\obj\Debug\netstandard2.0\Cognizant.Domain.pdb

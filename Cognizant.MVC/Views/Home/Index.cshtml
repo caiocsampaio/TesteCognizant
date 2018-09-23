@@ -1,0 +1,192 @@
+﻿@model IEnumerable<Cognizant.Domain.Models.Account>
+
+@{
+    ViewData["Title"] = "Cognizant Bank";
+}
+
+@section Scripts {
+    <script type="text/javascript" id="Document-script">
+        $(document).ready(function(){
+            $('[data-toggle=tooltip]').tooltip();
+        })
+    </script>
+
+    <script type="text/javascript" id="Client-script">
+        $('#add-client').submit(function(e){
+            e.preventDefault();
+
+            var client = createClient();
+
+            postClient(client);
+        })
+
+        $('[data-button=remove-client]').click(function(){
+            var $row = $(this).closest('tr');
+            const accountId = $row.attr('data-accountId');
+            debugger
+            removeAccount(accountId);
+        })
+
+        var createClient = function() {
+            const name = $('#client-name').val();
+            const type = $('#client-type').val();
+            const agency = $('#client-ag').val();
+            const account = $('#client-acc').val();
+
+            if (type == null) {
+                type = 1;
+            }
+
+            return {"Name": name, "type": type, "agency": agency, "account": account}
+        }
+
+        var postClient = function(client) {
+            var request = JSON.stringify(client);
+
+            $.ajax({
+                url: '@Url.Action("CreateAccount", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: request,
+                type: 'POST',
+                success: function(account) {
+                    location.reload();
+                },
+                error: function(response) {
+                    alert(`erro...`);
+                }
+            })
+        }
+
+        var removeAccount = function(accountId) {
+            var request = JSON.stringify({"accountId": accountId});
+
+            $.ajax({
+                url: '@Url.Action("RemoveAccount", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: request,
+                type: 'POST',
+                success: function(response) {
+                    debugger
+                    if(response == true) {
+                        location.reload();
+                    }
+                    else {
+                        alert('erro...');
+                    }
+                },
+                error: function(response) {
+                    alert(`erro...`);
+                }
+            })
+        }
+    </script>
+
+    <script type="text/javascript" id="Transaction-script">
+        $('[data-type=transaction-form]').submit(function(e){
+            e.preventDefault();
+        })
+
+        $('[data-button=debit]').click(function(){
+            const id = this.id.split('-')[1];
+            const amount = $(`#val-${id}`).val();
+            transaction(id, amount, 1);
+        })
+
+        $('[data-button=withdraw]').click(function(){
+            const id = this.id.split('-')[1];
+            const amount = $(`#val-${id}`).val();
+            transaction(id, amount, 2);
+        })
+        
+        var transaction = function(id, amount, type) {
+            var transaction = {'accountId': id, 'amount': amount, 'type': type};
+
+            request = JSON.stringify(transaction);
+
+            $.ajax({
+                url: '@Url.Action("Transaction", "Home")',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: request,
+                type: 'POST',
+                success: function(account) {
+                    location.reload();
+                },
+                error: function(response) {
+                    alert(`erro...`);
+                }
+            })
+        }
+    </script>
+}
+
+
+<div class="panel panel-default" style="margin-top: 40px;">
+    <div class="panel-heading">
+        <form id="add-client" class="form-inline">
+            <input class="form-control" type="text" id="client-name" placeholder="Nome" required>
+            <select class="form-control" id="client-type" required>
+                <option value="" disabled selected>Tipo</option>
+                <option value="1">Pessoa Física</option>
+                <option value="2">Pessoa Jurídica</option>
+            </select>
+            <input type="number" min="0" class="form-control" id="client-ag" placeholder="Agência" required>
+            <input type="number" min="0" class="form-control" id="client-acc" placeholder="Conta" required>
+            <button class="btn btn-success" id="submit-client">Novo Cliente</button>
+        </form>
+    </div>
+    <div class="panel-body">
+        <table class="table table-default table-responsive table-striped" id="clientTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Agência</th>
+                    <th>Conta</th>
+                    <th>Saldo</th>
+                    <th>Transação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr data-accountId="@item.Id">
+                        <td>@item.Client.Name</td>
+                        @{
+                            if((int)item.Client.Type == 1)
+                            {
+                                <td>Pessoa Física</td>
+                            }
+                            else
+                            {
+                                <td>Pessoa Jurídica</td>
+                            }
+                        }
+                        <td>@item.AccAgency</td>
+                        <td>@item.AccNumber</td>
+                        <td>@string.Format("{0:C}", item.Balance)</td>
+                        <td>
+                            <form data-type="transaction-form" id="form-@item.Id">
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">R$</span>
+                                        <input type="number" class="form-control" id="val-@item.Id" />
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button class="btn btn-success" data-button="debit" id="debit-@item.Id">Debitar</button>
+                                    <button class="btn btn-danger" data-button="withdraw" id="with-@item.Id">Sacar</button>
+                                    <button class="btn btn-default" data-button="remove-client" data-toggle="tooltip" title="Remover cliente" id="remove-@item.Client.Id">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
